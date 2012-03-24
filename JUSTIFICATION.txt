@@ -1,0 +1,32 @@
+For my Yahtzee AI, I have chosen to implement a heuristic-based approach based upon the model described at http://www.cs.loyola.edu/~jglenn/research/optimal_yahtzee.pdf pg. 13 entitled "heuristic". However, I only closely follow it for selecting a scoring move and instead implement a new heuristic for selecting keep-sets.
+
+Good assumptions we can make about a given state:
+- Previous states don't matter
+- We should never try a score our dice until after the 2nd reroll
+
+Point 1 implies that we can treat our system as time independent, which means we do not need to store previous moves in order to better calculate future moves. Point 2 implies that even if our heuristics for scoring and keep-sets map to different intervals, they should only be looked at in mutually exclusive situations.
+
+For our scoring heuristic, we define it as the total score of our card plus the value of our scoring choice plus the expected value for the remaining categories, including upper section bonus. All expected values used in this AI come from table 11 at http://www-set.win.tue.nl/~wstomv/misc/yahtzee/yahtzee-report-unfinished.pdf . Deriving these values are not difficult, but it's easier to hardcode them.
+
+For our keep-set heuristic, we generate a table of keep-sets and the expected value for that keep-set as the expected value after rolling the remaining die once. We calculate this by summing the probabilty of getting our adjunct keep-set times the average expected value of the resulting dice. To get our heuristic for a given state, we add the difference between actual score and expected score for each position in the card that we have filled.
+
+Both heuristics as currently implemented are very bad at predicting final score. I have done research into finding better approximations, and a suitable candidate for the scoring heuristic is score*(1-t*.015) where t is the 0-indexed turn number. This is generally within +/- 5 points of the actual score.
+
+Pros:
+- Generally picks the optimal scoring choice, worst case the second (checking against http://www-set.win.tue.nl/~wstomv/misc/yahtzee/osyp.php)
+- Generally picks within the top 5 keep set options, or usually picks a keepset that is within 2-5 points of the optimal expected value
+- Very fast. It can play 1000 games in approximately 3.65 seconds on a quad-core iMac.
+- Minimal overhead. Takes up under 700kb of memory
+
+Cons:
+- Can occasionally pick keep-sets that lose 10-15 points in expected value
+- When it (rarely) picks the second best scoring choice, this results in a large loss in expected score.
+
+Area(s) for further research:
+- Considering our heuristic for scoring works almost flawlessly, later work should focus on improving the reliability of the keep-set heuristic or using an alternative like forward search.
+
+If I had more time:
+- Implement a better approximation for the upper section bonus.
+- Have the AI/game logic recognize the joker rule. The AI does not currently make illegal moves, however it might make a substantially less optimal move in the rare occasion the joker rule is in effect.
+- Implement other AIs for comparison
+- Perform a second iteration and refactor the existing code
