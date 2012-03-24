@@ -5,10 +5,11 @@ March 24, 2012
 
 Build Instructions:
 
-	make clean && make 	=> Rebuilds the entire project
-	make project 		=> Builds the executable in the bin/ directory from the c++ files in the project/ directory
-	make scripts 		=> Reruns the python scripts in the scripts/ directory and outputs their results into files in the data/ directory
-	make clean 			=> Removes all data files and executables
+	make clean && make 		=> Rebuilds the entire project for production
+	make clean && make test => Rebuilds the entire project for testing
+	make project 			=> Builds the executable in the bin/ directory from the c++ files in the project/ directory
+	make scripts 			=> Reruns the python scripts in the scripts/ directory and outputs their results into files in the data/ directory
+	make clean 				=> Removes all data files and executables
 
 
 Program Execution Instructions:

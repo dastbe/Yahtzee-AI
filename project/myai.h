@@ -90,10 +90,17 @@ void MyAI::respondTo(const State state) const
 	for (std::list<Choice>::iterator itr = choice_list.begin(); itr != choice_list.end(); ++itr)
 	{
 		if (expectedValue(state,max_choice) < expectedValue(state,*itr)) max_choice = *itr;
+		#ifdef _TEST_
+			output << itr->to_s() << " with expected value: "  << expectedValue(state,*itr) << std::endl;
+		#endif
+
 	}
 
-	output << "Best Choice was: " << max_choice.to_s() << " with expected value " << expectedValue(state,max_choice) << std::endl;
-	//output << max_choice.toResponseValue() << std::endl;
+	#ifdef _TEST_
+		output << "Best Choice was: " << max_choice.to_s() << " with expected value: " << expectedValue(state,max_choice) << std::endl;
+	#else
+		output << max_choice.toResponseValue() << std::endl;
+	#endif
 }
 
 
