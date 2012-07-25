@@ -2,20 +2,23 @@ Yahtzee Parser and AI
 Created By: David Bell
 March 24, 2012
 
+Overview:
+
+Contest rules and example game states can be found in yahtzee.txt. To get a feel for
+what the program does, I suggest building for testing and entering some of these states.
 
 Build Instructions:
 
-	make clean && make 		=> Rebuilds the entire project for production
+	make clean && make      => Rebuilds the entire project for production
 	make clean && make test => Rebuilds the entire project for testing
-	make project 			=> Builds the executable in the bin/ directory from the c++ files in the project/ directory
-	make scripts 			=> Reruns the python scripts in the scripts/ directory and outputs their results into files in the data/ directory
-	make clean 				=> Removes all data files and executables
+	make project            => Builds the executable in the bin/ directory from the c++ files in the project/ directory
+	make scripts            => Reruns the python scripts in the scripts/ directory and outputs their results into files in the data/ directory
+	make clean              => Removes all data files and executables
 
 
 Program Execution Instructions:
 
 	./bin/yai
-
 
 Compiler Specifications:
 
