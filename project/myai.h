@@ -42,7 +42,7 @@ MyAI::MyAI(std::ostream& out) : GameAI(out)
 
 	// Build a map of key-set => expected value pairs
 	std::ifstream ev_file;
-	ev_file.open("data/ev_file.txt");
+	ev_file.open("../data/ev_file.txt");
 
 	if (!ev_file.is_open())
 	{
@@ -62,7 +62,7 @@ MyAI::MyAI(std::ostream& out) : GameAI(out)
 
 	// Build a list of all possible key-set-booleans
 	std::ifstream ksb_file;
-	ksb_file.open("data/ksb_file.txt");
+	ksb_file.open("../data/ksb_file.txt");
 
 	if (!ksb_file.is_open())
 	{
