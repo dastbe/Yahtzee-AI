@@ -5,9 +5,10 @@ default: scripts project
 clean:
 	rm data/*_file.txt
 	rm bin/yai
+	rm obj/*
 
 project: project/main.cpp obj/diceroll.o obj/choice.o obj/myai.o obj/playercard.o obj/state.o
-	g++ -g -o bin/yai project/main.cpp obj/myai.o obj/diceroll.o obj/choice.o obj/playercard.o obj/state.o
+	g++ -o bin/yai project/main.cpp obj/myai.o obj/diceroll.o obj/choice.o obj/playercard.o obj/state.o
 
 obj/diceroll.o: project/diceroll.cpp project/diceroll.h
 	g++ -c project/diceroll.cpp -o obj/diceroll.o
