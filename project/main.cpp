@@ -7,6 +7,11 @@
 // Created by: David Bell
 // March 24th, 2012
 
+// extern YahtzeeParser;
+// extern MyAI YahtzeeAI;
+
+extern MyAI YahtzeeAI;
+
 int main()
 {
 	#ifdef _TEST_

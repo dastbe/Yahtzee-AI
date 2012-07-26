@@ -15,15 +15,8 @@ class GameAI
 protected:
 	std::ostream& output;
 public:
-	GameAI(std::ostream&);
-	virtual void respondTo(const State) const;
+	GameAI(std::ostream& out) : output(out) {}
+	virtual void respondTo(const State) const = 0;
 };
-
-GameAI::GameAI(std::ostream& out) : output(out) {}
-
-void GameAI::respondTo(const State s) const
-{
-
-}
 
 #endif
